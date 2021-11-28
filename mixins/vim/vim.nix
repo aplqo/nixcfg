@@ -1,14 +1,16 @@
-{pkgs, ...}:
+{ pkgs, lib, ...}:
 {
   config = {
     programs.vim = {
       enable = true;
-      settings = {
-        number = true;
-        mouse = "a";
-      };
-      extraConfig = (builtins.readFile ./basic.vim);
-      plugins = [ pkgs.vimPlugins.vim-nix ];
+      extraConfig = (builtins.readFile ./basic.vim) + ''
+        let g:moonflyTransparent = 1
+        colorscheme moonfly
+        '';
+      plugins = [ 
+        pkgs.vimPlugins.vim-nix
+        (lib.callPackageWith pkgs ../../pkgs/vimPlugins/vim-moonfly-colors.nix {})
+      ];
     };
   };
 }
