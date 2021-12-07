@@ -15,6 +15,7 @@
   home-manager.users.aplqo = {pkgs, ...}: {
     imports = [
       ../../mixins-hm/git.nix
+      (import ../../mixins-hm/htop.nix { profile = "server"; })
       ../../modules-hm/xvim
 
       # vim packs
