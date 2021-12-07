@@ -14,9 +14,25 @@
 
   home-manager.users.aplqo = {pkgs, ...}: {
     imports = [
-      ../../mixins/git.nix
-      ../../mixins/vim/vim.nix
+      ../../mixins-hm/git.nix
+      ../../modules-hm/xvim
+
+      # vim packs
+      (let
+        eval = (import ../../modules-hm/xvim/lib.nix).evalPacks;
+      in args: {
+        imports = with (import ../../mixins-hm/vimPacks); [
+          (eval "all" [ profiles.basic ])
+        ];
+
+        config = {
+          modules.xvim = {
+            vim.base.enable = true;
+          };
+        };
+      })
     ];
+
   };
 
   services.openssh.passwordAuthentication = false;
