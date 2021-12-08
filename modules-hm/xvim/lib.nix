@@ -16,8 +16,10 @@ rec {
           [ { modules.xvim.${name} = config args; } ]
         );
 
-  evalPacks = select: packs: (args: {
-    imports = map (m: m select) packs;
+  evalPacks = cfg@{ all ? [], vim ? [], neovim ? [] }:  (args: {
+    imports = let 
+      eval = select: map (m: m select) cfg.${select} or [];
+    in (eval "all") ++ (eval "vim") ++ (eval "neovim");
   });
 }
 

@@ -20,11 +20,11 @@
 
       # vim packs
       (let
-        eval = (import ../../modules-hm/xvim/lib.nix).evalPacks;
+        packs = import ../../mixins-hm/vimPacks;
       in args: {
-        imports = with (import ../../mixins-hm/vimPacks); [
-          (eval "all" [ profiles.basic ])
-        ];
+        imports = [ ((import ../../modules-hm/xvim/lib.nix).evalPacks {
+          all = [ packs.profiles.basic ];
+        }) ];
 
         config = {
           modules.xvim = {
