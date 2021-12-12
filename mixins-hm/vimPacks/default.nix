@@ -5,13 +5,13 @@ in rec {
   configs = import ./configs { inherit lib customPkgs; };
 
   themes = {
-    moonfly = lib.mkPack (args: {
+    moonfly = { enable ? false }: lib.mkPack (args@{lib, ...}: {
       base = {
         plugins = [ (customPkgs args).themes.vim-moonfly-colors ];
-        configs = [ ''
-            let g:moonflyTransparent = 1
-            colorscheme moonfly
-        '' ];
+        configs = builtins.filter (v: v != "") [ 
+          "let g:moonflyTransparent = 1"
+          (lib.optionalString enable "colorscheme moonfly")
+        ];
       };
     });
   };
@@ -28,7 +28,7 @@ in rec {
     basic = lib.mkPackDep {
       depends = [
         configs.base
-        themes.moonfly
+        (themes.moonfly { enable = true; })
       ];
     };
   };
