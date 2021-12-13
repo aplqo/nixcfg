@@ -1,6 +1,6 @@
 {lib, ...}:
 {
-  exporer = lib.mkPack ({pkgs, ...}: {
+  explorer = lib.mkPack ({pkgs, ...}: {
     base.configs = [''
         nmap <space>e <Cmd>CocCommand explorer<CR>
     ''];
@@ -12,5 +12,14 @@
     base.configs = [ (builtins.readFile ./coc-lists.nix) ];
 
     coc.extensions = [ pkgs.vimPlugins.coc-lists ];
+  });
+
+  highlight = lib.mkPack ({pkgs, ...}: {
+    base.configs = [''
+      " Highlight the symbol and its references when holding the cursor.
+      autocmd CursorHold * silent call CocActionAsync('highlight')
+    ''];
+
+    coc.extensions = [ pkgs.vimPlugins.coc-highlight ];
   });
 }
