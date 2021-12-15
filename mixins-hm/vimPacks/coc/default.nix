@@ -9,7 +9,7 @@
   });
 
   lists = lib.mkPack ({pkgs, ...}: {
-    base.configs = [ (builtins.readFile ./coc-lists.nix) ];
+    base.configs = [ (builtins.readFile ./coc-lists.vim) ];
 
     coc.extensions = [ pkgs.vimPlugins.coc-lists ];
   });
