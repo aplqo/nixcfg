@@ -31,5 +31,17 @@ in rec {
         (themes.moonfly { enable = true; })
       ];
     };
+
+    coc = lib.mkPackDep {
+      depends = [
+        configs.coc
+        coc.lists
+        coc.highlight
+        coc.explorer
+      ];
+      config = {pkgs, ...}: {
+        coc.extensions = [ pkgs.vimPlugins.coc-git ];
+      };
+    };
   };
 }
