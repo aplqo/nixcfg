@@ -17,6 +17,16 @@ in rec {
   };
 
   languages = {
+    json = lib.mkPack ({pkgs, ...}: {
+      coc = {
+        extensions = [ pkgs.vimPlugins.coc-json ];
+        config = {
+          "json.format.enable" = true;
+          "coc.preferences.formatOnSaveFiletypes" = [ "json"  "jsonc" ];
+        };
+      };
+    });
+
     nix = lib.mkPack ({pkgs, ...}: {
       base.plugins = [ pkgs.vimPlugins.vim-nix ];
     });
