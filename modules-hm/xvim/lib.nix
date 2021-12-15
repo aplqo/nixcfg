@@ -1,7 +1,7 @@
 rec {
   mkPack = mkPackFor null;
 
-  mkPackFor = select: cfg: name: args@{lib, ...}: 
+  mkPackFor = select: cfg: name: args@{pkgs, lib, ...}: 
   assert select != null -> select == name;
   {
     modules.xvim.${name} = cfg args;
