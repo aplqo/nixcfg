@@ -13,7 +13,7 @@ with lib;
   in mkIf cfg.enable {
     programs.neovim = {
       enable = true;
-      extraConfig = concatStringSep "\n" cfg.configs;
+      extraConfig = concatStringsSep "\n" cfg.configs;
       inherit (cfg) plugins extraPackages;
     };
   };
