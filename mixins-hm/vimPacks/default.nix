@@ -45,6 +45,8 @@ in rec {
 
   coc = import ./coc { inherit lib customPkgs; };
 
+  misc = import ./misc { inherit lib customPkgs; };
+
   profiles = {
     basic = lib.mkPackDep {
       depends = [
