@@ -4,7 +4,16 @@ let
 in rec {
   configs = import ./configs { inherit lib customPkgs; };
 
-  themes = {
+  themes = let
+    mkTheme = { name, pkg }: { enable ? false }: lib.mkPack ({pkgs, lib, ...}: {
+      base = {
+        plugins = [ pkgs.vimPlugins.${pkg} ];
+        configs = lib.optional enable [ "colorscheme ${name}" ];
+      };
+    });
+  in {
+    edge = mkTheme { name = "edge"; pkg = "edge"; };
+
     moonfly = { enable ? false }: lib.mkPack (args@{lib, ...}: {
       base = {
         plugins = [ (customPkgs args).themes.vim-moonfly-colors ];
@@ -14,6 +23,8 @@ in rec {
         ];
       };
     });
+
+    nord = mkTheme { name = "nord"; pkg = "nord-vim"; };
   };
 
   languages = {
