@@ -28,6 +28,30 @@ in rec {
   };
 
   languages = {
+    haskell = lib.mkPack ({pkgs, ...}: {
+      base = {
+        plugins = [ pkgs.vimPlugins.haskell-vim ];
+        extraPackages = [ pkgs.haskell-language-server ];
+      };
+      coc.config = {
+        languageserver.haskell = {
+          command = "haskell-language-server-wrapper";
+          args = [ "--lsp" ]; 
+          rootPatterns = [
+            "*.cabal"
+            "stack.yaml"
+            "cabal.project"
+            "package.yaml"
+            "hie.yaml"
+          ]; 
+          filetypes = [
+            "haskell"
+            "lhaskell"
+          ];
+        };
+      };
+    });
+
     json = lib.mkPack ({pkgs, ...}: {
       coc = {
         extensions = [ pkgs.vimPlugins.coc-json ];
