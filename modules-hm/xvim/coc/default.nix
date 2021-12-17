@@ -18,8 +18,8 @@
       else builtins.removeAttrs cfg [ "enable" ];
   in {
     modules.xvim = {
-      vim.coc = cfg;
-      neovim.coc = cfg;
+      vim.coc = push;
+      neovim.coc = push;
     };
   };
 }

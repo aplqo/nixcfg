@@ -10,10 +10,10 @@ with (import ./options.nix {
   config = let
     cfg = config.modules.xvim.vim.coc;
   in lib.mkIf cfg.enable {
-    programs.vim.plugins = [ pkgs.vimPlugins.coc-nvim ];
+    programs.vim.plugins = cfg.extensions ++ [ pkgs.vimPlugins.coc-nvim ]; 
 
     home = {
-      packages = cfg.extensions;
+      packages = [ pkgs.nodejs ];
       file.".vim/coc-settings.json".source = jsonFormat.generate "coc-settings.json" cfg.config;
     };
   };
