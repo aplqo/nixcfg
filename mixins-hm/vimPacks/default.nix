@@ -65,6 +65,14 @@ in rec {
     nix = lib.mkPack ({pkgs, ...}: {
       base.plugins = [ pkgs.vimPlugins.vim-nix ];
     });
+
+    rust = lib.mkPack ({pkgs, ...}: {
+      base.extraPackages = [ pkgs.rust-analyzer ];
+      coc = {
+        extensions = [ pkgs.vimPlugins.coc-rust-analyzer ];
+        config."rust-analyzer.server.path" = "${pkgs.rust-analyzer.outPath}/bin/rust-analyzer";
+      };
+    });
   };
 
   coc = import ./coc { inherit lib customPkgs; };
