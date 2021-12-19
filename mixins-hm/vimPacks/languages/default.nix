@@ -86,6 +86,12 @@
     };
   });
 
+  typescript = lib.mkPack ({pkgs, ...}: {
+    coc = {
+      extensions = [ pkgs.vimPlugins.coc-tsserver ];
+    };
+  });
+
   yaml = lib.mkPack ({pkgs, ...}: {
     coc = {
       extensions = [ pkgs.vimPlugins.coc-yaml ];
