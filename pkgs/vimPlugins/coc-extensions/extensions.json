@@ -1,5 +1,6 @@
 [
   "coc-fsharp",
+  "coc-omnisharp",
   "coc-toml",
   "coc-xml"
 ]

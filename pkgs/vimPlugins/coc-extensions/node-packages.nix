@@ -13,6 +13,24 @@ let
         sha512 = "EUoR67Jgt4AB7FVOLFcKQu92iaqCnQd9OfOthCqJt2GuD5jV8F7FPE9pJqhzzfAeQD6DZSxayToguy3YCdDkUA==";
       };
     };
+    "@types/follow-redirects-1.13.1" = {
+      name = "_at_types_slash_follow-redirects";
+      packageName = "@types/follow-redirects";
+      version = "1.13.1";
+      src = fetchurl {
+        url = "https://registry.npmjs.org/@types/follow-redirects/-/follow-redirects-1.13.1.tgz";
+        sha512 = "WPzi4QUu0rXeRmcssiXmNVCSbV9elxQJoVfp1N4SThfbKAKEo/xrhzpZVVk/XSCzbwUg70W8wEUC/TCR05QMBQ==";
+      };
+    };
+    "@types/node-17.0.0" = {
+      name = "_at_types_slash_node";
+      packageName = "@types/node";
+      version = "17.0.0";
+      src = fetchurl {
+        url = "https://registry.npmjs.org/@types/node/-/node-17.0.0.tgz";
+        sha512 = "eMhwJXc931Ihh4tkU+Y7GiLzT/y/DBNpNtr4yU9O2w3SYBsr9NaOPhQlLKRmoWtI54uNwuo0IOUFQjVOTZYRvw==";
+      };
+    };
     "balanced-match-1.0.2" = {
       name = "balanced-match";
       packageName = "balanced-match";
@@ -47,6 +65,15 @@ let
       src = fetchurl {
         url = "https://registry.npmjs.org/buffer-from/-/buffer-from-1.1.2.tgz";
         sha512 = "E+XQCRwSbaaiChtv6k6Dwgc+bx+Bs6vuKJHHl5kox/BaKbhiXzqQOwK4cO22yElGp2OCmjwVhT3HmxgyPGnJfQ==";
+      };
+    };
+    "coc-utils-0.0.12" = {
+      name = "coc-utils";
+      packageName = "coc-utils";
+      version = "0.0.12";
+      src = fetchurl {
+        url = "https://registry.npmjs.org/coc-utils/-/coc-utils-0.0.12.tgz";
+        sha512 = "8FzIRrTTGBSfF1UXacNTReD5yamVWff0Xob5LRAM4wmBbazkkxf6/iXu7rkK5PbA/iYd3mLR0YsOLUgbpi+ZfQ==";
       };
     };
     "coc-utils-0.0.16" = {
@@ -456,6 +483,65 @@ in
     meta = {
       description = "F# Language Support using FSAC";
       homepage = "https://github.com/yatli/fsharp-language-server#readme";
+      license = "MIT";
+    };
+    production = true;
+    bypassCache = true;
+    reconstructLock = true;
+  };
+  coc-omnisharp = nodeEnv.buildNodePackage {
+    name = "coc-omnisharp";
+    packageName = "coc-omnisharp";
+    version = "0.0.28";
+    src = fetchurl {
+      url = "https://registry.npmjs.org/coc-omnisharp/-/coc-omnisharp-0.0.28.tgz";
+      sha512 = "KyY1YdhGx5zVmItFFauXzeNrp9UR5BrNadijjog9nIxhFT4qaNuzcw+8QVaARsBCd/rEdJafjOUIMbHrWQVyhg==";
+    };
+    dependencies = [
+      sources."@types/follow-redirects-1.13.1"
+      sources."@types/node-17.0.0"
+      sources."balanced-match-1.0.2"
+      sources."brace-expansion-1.1.11"
+      sources."buffer-crc32-0.2.13"
+      sources."buffer-from-1.1.2"
+      sources."coc-utils-0.0.12"
+      sources."concat-map-0.0.1"
+      sources."concat-stream-1.6.2"
+      sources."core-util-is-1.0.3"
+      sources."debug-2.6.9"
+      sources."extract-zip-1.7.0"
+      sources."fd-slicer-1.1.0"
+      sources."follow-redirects-1.14.6"
+      sources."fs.realpath-1.0.0"
+      sources."glob-7.2.0"
+      sources."inflight-1.0.6"
+      sources."inherits-2.0.4"
+      sources."isarray-1.0.0"
+      sources."minimatch-3.0.4"
+      sources."minimist-1.2.5"
+      sources."mkdirp-0.5.5"
+      sources."ms-2.0.0"
+      sources."once-1.4.0"
+      sources."path-is-absolute-1.0.1"
+      sources."pend-1.2.0"
+      sources."process-nextick-args-2.0.1"
+      sources."readable-stream-2.3.7"
+      sources."rimraf-2.7.1"
+      sources."safe-buffer-5.1.2"
+      sources."string_decoder-1.1.1"
+      sources."tunnel-0.0.6"
+      sources."typedarray-0.0.6"
+      sources."util-deprecate-1.0.2"
+      sources."vscode-jsonrpc-6.0.0"
+      sources."vscode-languageserver-protocol-3.16.0"
+      sources."vscode-languageserver-types-3.16.0"
+      sources."wrappy-1.0.2"
+      sources."yauzl-2.10.0"
+    ];
+    buildInputs = globalBuildInputs;
+    meta = {
+      description = "OmniSharp integration, supports C# and VisualBasic.";
+      homepage = "https://github.com/yatli/coc-omnisharp#readme";
       license = "MIT";
     };
     production = true;
