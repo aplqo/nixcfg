@@ -77,4 +77,22 @@ in
     bypassCache = true;
     reconstructLock = true;
   };
+  coc-xml = nodeEnv.buildNodePackage {
+    name = "coc-xml";
+    packageName = "coc-xml";
+    version = "1.14.1";
+    src = fetchurl {
+      url = "https://registry.npmjs.org/coc-xml/-/coc-xml-1.14.1.tgz";
+      sha512 = "AW3VpWbRWxHOEVz/uhynp0dmOud51uDhqQQPxTHFqRlIjHoxwnZXC6Cr7ZYrm9A7ybX+C4LWfOKwD+8IH23GkQ==";
+    };
+    buildInputs = globalBuildInputs;
+    meta = {
+      description = "XML extension for coc.nvim";
+      homepage = "https://github.com/fannheyward/coc-xml#readme";
+      license = "MIT";
+    };
+    production = true;
+    bypassCache = true;
+    reconstructLock = true;
+  };
 }

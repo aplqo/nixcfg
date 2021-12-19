@@ -102,6 +102,16 @@
     };
   });
 
+  xml = lib.mkPack ({pkgs, ...}: {
+    coc = {
+      extensions = [ pkgs.vimPlugins.coc-xml ];
+      config = {
+        "xml.java.home" = "${pkgs.openjdk_headless}/lib/openjdk";
+        "coc.preferences.formatOnSaveFiletypes" = [ "xml" ];
+      };
+    };
+  });
+
   yaml = lib.mkPack ({pkgs, ...}: {
     coc = {
       extensions = [ pkgs.vimPlugins.coc-yaml ];
