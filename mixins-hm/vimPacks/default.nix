@@ -16,7 +16,7 @@ in rec {
 
     moonfly = { enable ? false }: lib.mkPack (args@{lib, ...}: {
       base = {
-        plugins = [ (customPkgs args).themes.vim-moonfly-colors ];
+        plugins = [ (customPkgs args).vim-moonfly-colors ];
         configs = builtins.filter (v: v != "") [ 
           "let g:moonflyTransparent = 1"
           (lib.optionalString enable "colorscheme moonfly")
