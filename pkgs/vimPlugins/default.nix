@@ -1,4 +1,4 @@
-{vimUtils, fetchFromGitHub}:
+{pkgs, lib, nodejs, stdenv, callPackage, vimUtils, fetchFromGitHub}:
 {
   vim-moonfly-colors = vimUtils.buildVimPlugin {
     name = "vim-moonfly-colors";
@@ -9,4 +9,4 @@
       sha256 = "121n0v7m0z06rjm897bysp1bz4vw19w1v1pflgd5y0plvdfn2wh1";
     };
   };
-}
+} // callPackage ./coc-extensions {}
