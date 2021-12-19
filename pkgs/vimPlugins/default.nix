@@ -1,8 +1,8 @@
-{pkgs, ...}:
+{vimUtils, fetchFromGitHub}:
 {
-  vim-moonfly-colors = pkgs.vimUtils.buildVimPlugin {
+  vim-moonfly-colors = vimUtils.buildVimPlugin {
     name = "vim-moonfly-colors";
-    src = pkgs.fetchFromGitHub {
+    src = fetchFromGitHub {
       owner = "bluz71";
       repo = "vim-moonfly-colors";
       rev = "aa4ecf1301cbc70d9f7e2a7ff7729abdd1a64dd8";

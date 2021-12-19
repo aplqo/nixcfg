@@ -1,4 +1,4 @@
-{lib, customPkgs}:
+{lib}:
 {
   lightline = import ./lightline;
 }

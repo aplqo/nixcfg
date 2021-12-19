@@ -1,4 +1,4 @@
-{lib, customPkgs}:
+{lib}:
 {
   cpp = lib.mkPack ({pkgs, ...}: {
     base = {

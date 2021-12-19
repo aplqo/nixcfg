@@ -1,8 +1,9 @@
 let
   lib = import ../../modules-hm/xvim/lib.nix;
-  customPkgs = import ../../pkgs/vimPlugins;
+
+  call = path: import path { inherit lib; };
 in rec {
-  configs = import ./configs { inherit lib customPkgs; };
+  configs = call ./configs;
 
   themes = let
     mkTheme = { name, pkg }: { enable ? false }: lib.mkPack ({pkgs, lib, ...}: {
@@ -14,9 +15,9 @@ in rec {
   in {
     edge = mkTheme { name = "edge"; pkg = "edge"; };
 
-    moonfly = { enable ? false }: lib.mkPack (args@{lib, ...}: {
+    moonfly = { enable ? false }: lib.mkPack ({pkgs, lib, ...}: {
       base = {
-        plugins = [ (customPkgs args).vim-moonfly-colors ];
+        plugins = [ pkgs.vimPlugins.vim-moonfly-colors ];
         configs = builtins.filter (v: v != "") [ 
           "let g:moonflyTransparent = 1"
           (lib.optionalString enable "colorscheme moonfly")
@@ -27,11 +28,11 @@ in rec {
     nord = mkTheme { name = "nord"; pkg = "nord-vim"; };
   };
 
-  languages = import ./languages { inherit lib customPkgs; };
+  languages = call ./languages;
 
-  coc = import ./coc { inherit lib customPkgs; };
+  coc = call ./coc;
 
-  misc = import ./misc { inherit lib customPkgs; };
+  misc = call ./misc;
 
   profiles = {
     basic = lib.mkPackDep {
