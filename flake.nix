@@ -5,14 +5,17 @@
 
   outputs = {nixpkgs, home-manager, ...} @inputs: {
     nixosConfigurations = {
-       nixos-dev1 = nixpkgs.lib.nixosSystem {
-         system = "x86_64-linux";
-         modules = [ 
-           ./hosts/nixos-dev1/configuration.nix 
-           home-manager.nixosModules.home-manager
-         ];
-         specialArgs = { inherit inputs; };
-       };
-     };
-   };
- }
+      nixos-dev1 = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [ 
+          ./hosts/nixos-dev1/configuration.nix 
+          home-manager.nixosModules.home-manager
+        ];
+        specialArgs = { inherit inputs; };
+      };
+    };
+    devShells = {
+      x86_64-linux = import ./shells { pkgs = nixpkgs.legacyPackages.x86_64-linux; };
+    };
+  };
+}
