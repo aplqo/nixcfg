@@ -25,6 +25,13 @@
       };
     };
   });
+  
+  fsharp = lib.mkPack ({pkgs, ...}: {
+    base.plugins = [ pkgs.vimPlugins.vim-polyglot ];
+    coc = {
+      extensions = [ pkgs.vimPlugins.coc-fsharp ];
+    };
+  });
 
   haskell = lib.mkPack ({pkgs, ...}: {
     base = {
