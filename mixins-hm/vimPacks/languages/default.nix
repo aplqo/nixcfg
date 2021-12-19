@@ -112,6 +112,12 @@
       };
     };
   });
+  
+  vim = lib.mkPack ({pkgs, ...}: {
+    coc = {
+      extensions = [ pkgs.vimPlugins.coc-vimlsp ];
+    };
+  });
 
   typescript = lib.mkPack ({pkgs, ...}: {
     coc = {
