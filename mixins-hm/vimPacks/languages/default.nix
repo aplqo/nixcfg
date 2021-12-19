@@ -86,6 +86,16 @@
     };
   });
 
+  toml = lib.mkPack ({pkgs, ...}: {
+    coc = {
+      extensions = [ pkgs.vimPlugins.coc-toml ];
+      config = {
+        "toml.semanticTokens" = true;
+        "coc.preferences.formatOnSaveFiletypes" = [ "toml" ];
+      };
+    };
+  });
+
   typescript = lib.mkPack ({pkgs, ...}: {
     coc = {
       extensions = [ pkgs.vimPlugins.coc-tsserver ];
