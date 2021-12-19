@@ -76,6 +76,16 @@ in rec {
         };
       };
     });
+
+    yaml = lib.mkPack ({pkgs, ...}: {
+      coc = {
+        extensions = [ pkgs.vimPlugins.coc-yaml ];
+        config = {
+          "yaml.format.enable" = true;
+          "coc.preferences.formatOnSaveFiletypes" = [ "yaml" ];
+        };
+      };
+    });
   };
 
   coc = import ./coc { inherit lib customPkgs; };
