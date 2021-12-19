@@ -22,14 +22,22 @@
       ../../modules-hm/xvim
       (let
         packs = import ../../mixins-hm/vimPacks;
-      in args: {
-        imports = [ ((import ../../modules-hm/xvim/lib.nix).evalPacks {
-          all = [ packs.profiles.basic ];
-        }) ];
+      in {pkgs, ...}: {
+        imports = [ 
+          ((import ../../modules-hm/xvim/lib.nix).evalPacks {
+            all = with packs; [ 
+              profiles.basic
+              profiles.coc
+              languages.nix 
+              misc.lightline
+            ];
+          }) 
+        ];
 
         config = {
           modules.xvim = {
-            vim.base.enable = true;
+            all.base.enable = true;
+            all.coc.enable = true;
           };
         };
       })
