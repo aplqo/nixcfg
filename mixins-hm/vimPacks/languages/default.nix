@@ -64,6 +64,7 @@
           "lhaskell"
         ];
       };
+      "coc.preferences.formatOnSaveFiletypes" = [ "haskell" "lhaskell" ];
     };
   });
 
