@@ -60,6 +60,7 @@
   environment.systemPackages = with pkgs; [
     wget
     firefox
+    yubioath-desktop
   ];
 
   # This value determines the NixOS release from which the default
