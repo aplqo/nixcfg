@@ -15,5 +15,9 @@
       useGlobalPkgs = true;
       useUserPackages = true;
     };
+
+    environment.systemPackages = with pkgs; [
+      git
+    ];
   };
 }
