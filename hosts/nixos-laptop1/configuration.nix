@@ -50,7 +50,10 @@
     extraGroups = [ "networkmanager" "wheel" ];
   };
 
-  hardware.bluetooth.enable = true;
+  hardware.bluetooth = {
+    enable = true;
+    powerOnBoot = false;
+  };
 
   services.fstrim.enable = true;
 
