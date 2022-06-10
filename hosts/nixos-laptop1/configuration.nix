@@ -59,7 +59,6 @@
 
   environment.systemPackages = with pkgs; [
     wget
-    firefox
     yubioath-desktop
   ];
 
@@ -75,6 +74,7 @@
     imports = [
       ../../mixins-hm/git.nix
       ../../mixins-hm/kde
+      ../../mixins-hm/firefox.nix
       (import ../../mixins-hm/htop.nix { profile = "laptop"; })
       ../../modules-hm/xvim
 
