@@ -70,29 +70,37 @@
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "22.05"; # Did you read the comment?
 
-  home-manager.users.aplqo = { pkgs, ... }: {
-    imports = [
-      (import ../../mixins-hm/git.nix "aplqo" "aplqo@outlook.com")
-      ../../mixins-hm/kde
-      ../../mixins-hm/firefox.nix
-      (import ../../mixins-hm/htop.nix { profile = "laptop"; })
-      ../../modules-hm/xvim
+  home-manager.users = let
+    commons = name: email: { pkgs, ... }: {
+      imports = [
+        (import ../../mixins-hm/git.nix name email)
+        ../../mixins-hm/kde
+        ../../mixins-hm/firefox.nix
+        (import ../../mixins-hm/htop.nix { profile = "laptop"; })
+        ../../modules-hm/xvim
 
-      (let
-        packs = import ../../mixins-hm/vimPacks;
-      in { pkgs, ...}: {
-        imports = [
-          ((import ../../modules-hm/xvim/lib.nix).evalPacks {
-            all = with packs; [
-              profiles.basic
-              languages.nix
-            ];
-          })
-        ];
+        (let
+          packs = import ../../mixins-hm/vimPacks;
+        in { pkgs, ...}: {
+          imports = [
+            ((import ../../modules-hm/xvim/lib.nix).evalPacks {
+              all = with packs; [
+                profiles.basic
+                languages.nix
+              ];
+            })
+          ];
 
-        config.modules.xvim.neovim.base.enable = true;
-      })
-    ];
+          config.modules.xvim.neovim.base.enable = true;
+        })
+      ];
+    };
+  in {
+    aplqo = { pkgs, ...}: {
+      imports = [
+        (commons "aplqo" "aplqo@outlook.com")
+      ];
+    };
   };
 
   nix.settings.substituters = [ "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store" ];
