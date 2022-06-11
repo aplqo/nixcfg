@@ -12,7 +12,10 @@
           ./hosts/${name}/configuration.nix
           home-manager.nixosModules.home-manager
           ({pkgs, ...}: {
-            nixpkgs.overlays = [ overlays.vimPlugins ];
+            nixpkgs.overlays = [ 
+              overlays.vimPlugins
+              overlays.vscode-extensions
+            ];
           })
         ];
         specialArgs = { inherit inputs; };
