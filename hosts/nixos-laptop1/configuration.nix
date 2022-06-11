@@ -72,7 +72,7 @@
 
   home-manager.users.aplqo = { pkgs, ... }: {
     imports = [
-      ../../mixins-hm/git.nix
+      (import ../../mixins-hm/git.nix "aplqo" "aplqo@outlook.com")
       ../../mixins-hm/kde
       ../../mixins-hm/firefox.nix
       (import ../../mixins-hm/htop.nix { profile = "laptop"; })
