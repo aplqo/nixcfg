@@ -37,8 +37,6 @@
           };
         };
       };
-
-      home.packages = [ pkgs.sbt ];
     };
 
     haskell = {pkgs, ...}: {
