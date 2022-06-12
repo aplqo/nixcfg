@@ -6,6 +6,7 @@
         "editor.fontLigatures" = true;
         "editor.formatOnSave" = true;
         "editor.formatOnType" = true;
+        "editor.tabSize" = 2;
         "terminal.integrated.cursorStyle" = "line";
       };
     };
