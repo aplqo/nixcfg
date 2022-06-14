@@ -10,5 +10,5 @@ rec {
     id_ed25519 = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFMTo8TNxYRq83ZkQ4EKatdsKjaj8nbFZgCMQFEpE7YQ aplqo@nixos";
   };
   
-  all = [ yubikey.pgp yubikey.piv nixos-laptop1 ];
+  all = [ yubikey.pgp yubikey.piv nixos-laptop1.id_ed25519 ];
 }
