@@ -37,6 +37,7 @@
         azure-cli
         cacert
         azure-storage-azcopy
+        jq
       ];
     };
   };
