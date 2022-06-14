@@ -1,6 +1,6 @@
 { inputs, ...}: {
   imports = [
-    "${inputs.nixpkgs}/nixos/modules/virtualisation/azure-common.nix"
+    ../../mixins/azure-common.nix
     ../../mixins/common.nix
   ];
 
@@ -40,7 +40,4 @@
       ];
     };
   };
-
-  services.openssh.passwordAuthentication = false;
-  security.sudo.wheelNeedsPassword = false;
 }
