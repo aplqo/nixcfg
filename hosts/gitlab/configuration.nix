@@ -27,6 +27,7 @@ in {
       port = 80;
       https = true;
       initialRootPasswordFile = "/var/keys/gitlab/root_password";
+      databasePasswordFile = "/var/keys/gitlab/db_password";
 
       secrets = {
         secretFile = "/var/keys/gitlab/secret";
