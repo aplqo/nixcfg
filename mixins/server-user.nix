@@ -3,6 +3,6 @@
     isNormalUser = true;
     home = "/home/aplqo";
     extraGroups = [ "wheel" ];
-    openssh.authorizedKeys.keys = (import ../../data/sshkeys.nix).all;
+    openssh.authorizedKeys.keys = (import ../data/sshkeys.nix).all;
   };
 }
