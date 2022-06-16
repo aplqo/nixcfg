@@ -2,14 +2,8 @@
   imports = [
     ../../mixins/azure-common.nix
     ../../mixins/common.nix
+    ../../mixins/server-user.nix
   ];
-
-  users.users.aplqo = {
-    isNormalUser = true;
-    home = "/home/aplqo";
-    extraGroups = [ "wheel" ];
-    openssh.authorizedKeys.keys = (import ../../data/sshkeys.nix).all;
-  };
 
   home-manager.users.aplqo = { pkgs, ...}: {
     imports = [
