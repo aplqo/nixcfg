@@ -27,7 +27,7 @@
 
       azure-image-builder = mkSystem "azure-image-builder" "x86_64-linux"; # NixOs Azure image builder
 
-      gitlab = mkSystem "gitlab" "x86_64-linux";
+      gitlab-backup = mkSystem "gitlab-backup" "x86_64-linux";
     };
 
     overlays = import ./overlays;
