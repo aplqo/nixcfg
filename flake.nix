@@ -26,6 +26,8 @@
       nixos-laptop1 = mkSystem "nixos-laptop1" "x86_64-linux";
 
       azure-image-builder = mkSystem "azure-image-builder" "x86_64-linux"; # NixOs Azure image builder
+
+      gitlab = mkSystem "gitlab" "x86_64-linux";
     };
 
     overlays = import ./overlays;
