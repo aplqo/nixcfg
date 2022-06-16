@@ -1,5 +1,5 @@
 { inputs, ...}: let
-  host = "gitlab.20.24.93.201.nip.io";
+  host = "gitlab.20.239.156.230.nip.io";
 in {
   imports = [
     ../../mixins/azure-common.nix
