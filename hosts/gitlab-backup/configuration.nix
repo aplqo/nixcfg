@@ -4,7 +4,7 @@ in {
   imports = [
     ../../mixins/azure-common.nix
     ../../mixins/common.nix
-    ../../mixins/server-user.nix
+    (import ../../mixins/server-user.nix { name = "aplqo"; })
   ];
 
   services = {

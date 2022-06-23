@@ -1,8 +1,9 @@
+{ name, sshkeys ? (import ../data/sshkeys.nix).all }:
 { pkgs, ...}: {
-  users.users.aplqo = {
+  users.users.${name} = {
     isNormalUser = true;
-    home = "/home/aplqo";
+    home = "/home/${name}";
     extraGroups = [ "wheel" ];
-    openssh.authorizedKeys.keys = (import ../data/sshkeys.nix).all;
+    openssh.authorizedKeys.keys = sshkeys;
   };
 }

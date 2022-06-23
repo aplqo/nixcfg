@@ -3,7 +3,7 @@
   imports = [
     ../../mixins/common.nix
     ../../mixins/azure-common.nix
-    ../../mixins/server-user.nix
+    (import ../../mixins/server-user.nix { name = "aplqo"; })
   ];
 
   home-manager.users = let
