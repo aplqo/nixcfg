@@ -6,6 +6,8 @@
     (import ../../mixins/server-user.nix { name = "aplqo"; })
   ];
 
+  system.stateVersion = "22.05";
+
   home-manager.users = let
     common = name: email: {pkgs, ...}: {
       imports = [
