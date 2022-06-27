@@ -99,6 +99,7 @@
     aplqo = { pkgs, ...}: {
       imports = [
         (commons "aplqo" "aplqo@outlook.com")
+        ../../mixins-hm/gpg.nix
       ];
     };
   };
