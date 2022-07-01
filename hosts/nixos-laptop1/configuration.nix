@@ -94,6 +94,12 @@
           config.modules.xvim.neovim.base.enable = true;
         })
       ];
+
+      config = {
+        home = {
+          stateVersion = "22.05";
+        };
+      };
     };
   in {
     aplqo = { pkgs, ...}: {

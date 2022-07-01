@@ -27,12 +27,15 @@
     ];
 
     config = {
-      home.packages = with pkgs; [
-        azure-cli
-        cacert
-        azure-storage-azcopy
-        jq
-      ];
+      home = {
+        packages = with pkgs; [
+          azure-cli
+          cacert
+          azure-storage-azcopy
+          jq
+        ];
+        stateVersion = "22.05";
+      };
     };
   };
 }

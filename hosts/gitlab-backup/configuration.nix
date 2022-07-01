@@ -45,6 +45,8 @@ in {
       ../../mixins-hm/tmux.nix
       (import ../../mixins-hm/htop.nix { profile = "server"; })
     ];
+
+    config.home.stateVersion = "22.05";
   };
 
   security.acme = {

@@ -43,6 +43,10 @@
       imports = [
         (common "aplqo" "aplqo@outlook.com")
       ];
+
+      config.home = {
+        stateVersion = "22.05";
+      };
     };
   };
 
